@@ -1,5 +1,6 @@
 # 📜 get-discord-token
-A simple guid on how to easily retrieve your Discord token using a web browser.
+A simple guide on how to easily retrieve your Discord token using the browser's developer tools.
+
 > [!WARNING]
 > Unauthorized use of a Discord token may violate Discord's Terms of Service and result in account suspension. Use this information responsibly.
 
@@ -7,46 +8,31 @@ A simple guid on how to easily retrieve your Discord token using a web browser.
 
 ## ❓ How to Retrieve Your Discord Token?
 
-### 1. Open Discord in a Browser
-Log in to your Discord account through a web browser (Google Chrome, Firefox, Edge, etc.).
+Cette méthode consiste à intercepter une requête réseau pour extraire l'en-tête d'autorisation contenant votre jeton.
 
-### 2. Open the Browser Console
-- Windows/Linux: `F12` or `Ctrl + Shift + I` then go to the **Console** tab
-- Mac: `Cmd + Option + I` then go to the **Console** tab
+### 1. Ouvrir Discord dans un navigateur
+Connectez-vous à votre compte Discord via un navigateur web (Chrome, Firefox, Edge, etc.) sur [discord.com/app](https://discord.com/app).
 
-### 3. Run the Following Script in the Console
-```javascript
-(function() {
-    const iframe = document.createElement('iframe');
-    document.body.appendChild(iframe);
-    const token = JSON.parse(iframe.contentWindow.localStorage.token);
-    iframe.remove();
+### 2. Accéder aux Outils de Développement
+- Appuyez sur `F12` (ou `Ctrl + Shift + I` sur Windows/Linux, `Cmd + Option + I` sur Mac).
+- Cliquez sur l'onglet **Network** (Réseau) en haut de la fenêtre qui vient de s'ouvrir.
 
-    console.log('%cAction required: CLICK anywhere on the Discord page now to copy the token!', 'font-size: 20px; color: red; font-weight: bold;');
 
-    window.addEventListener('click', function copyOnFocus() {
-        navigator.clipboard.writeText(token).then(() => {
-            console.log('%c✅ Token copied to clipboard!', 'font-size:16px; color: green; font-weight: bold;');
-            console.log('Token:', token);
-            alert('Token copied!');
-        }).catch(err => {
-            console.error('Error:', err);
-        });
-        
-        window.removeEventListener('click', copyOnFocus);
-    }, { once: true });
-})();
-```
 
-### 4. Retrieve Your Token
-The token is now copied to your clipboard. You can paste it (**Ctrl + V** or **Cmd + V**) wherever you need.
+### 3. Filtrer et Trouver la Requête
+- Dans la barre de recherche "Filter" de l'onglet Network, tapez `/api`.
+- Si la liste est vide, rafraîchissez la page (`F5`) ou changez de salon (cliquez sur un autre serveur ou un ami).
+- Sélectionnez l'une des requêtes qui apparaît dans la liste (par exemple `science`, `messages` ou `library`).
+
+### 4. Extraire le Token
+- Une fois la requête sélectionnée, allez dans la section **Headers** (En-têtes) à droite.
+- Cherchez la ligne nommée **`authorization`** dans la catégorie "Request Headers".
+- La valeur à côté de `authorization` est votre **Token Discord**. Copiez-la soigneusement.
 
 ---
 
 > [!CAUTION]
-> - Never share your Discord token with anyone.
-> - A token grants full access to your account, including messages, servers, and settings.
-> - If your token is compromised, change your password immediately to generate a new one.
+> - **NE PARTAGEZ JAMAIS** votre token. Quiconque possède ce jeton a un accès total à votre compte (messages, serveurs, paramètres) sans avoir besoin de votre mot de passe ou de l'A2F.
+> - Si vous pensez que votre token a été compromis, **changez immédiatement votre mot de passe Discord**. Cela réinitialisera automatiquement votre jeton.
 
 **This guide is intended for learning and understanding how Discord works. Any malicious use is strictly prohibited.**
-
