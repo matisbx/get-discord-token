@@ -8,31 +8,30 @@ A simple guide on how to easily retrieve your Discord token using the browser's 
 
 ## ❓ How to Retrieve Your Discord Token?
 
-Cette méthode consiste à intercepter une requête réseau pour extraire l'en-tête d'autorisation contenant votre jeton.
+This method involves inspecting network requests to extract the authorization header containing your unique token.
 
-### 1. Ouvrir Discord dans un navigateur
-Connectez-vous à votre compte Discord via un navigateur web (Chrome, Firefox, Edge, etc.) sur [discord.com/app](https://discord.com/app).
+### 1. Open Discord in a Browser
+Log in to your Discord account via a web browser (Chrome, Firefox, Edge, etc.) at [discord.com/app](https://discord.com/app).
 
-### 2. Accéder aux Outils de Développement
-- Appuyez sur `F12` (ou `Ctrl + Shift + I` sur Windows/Linux, `Cmd + Option + I` sur Mac).
-- Cliquez sur l'onglet **Network** (Réseau) en haut de la fenêtre qui vient de s'ouvrir.
+### 2. Open Developer Tools
+- Press `F12` (or `Ctrl + Shift + I` on Windows/Linux, `Cmd + Option + I` on Mac).
+- Click on the **Network** tab at the top of the developer panel.
 
+### 3. Filter and Find the Request
+- In the "Filter" search bar of the Network tab, type `/api`.
+- If the list is empty, refresh the page (`F5`) or switch to a different server or DM.
+- Select any of the requests that appear in the list (e.g., `science`, `messages`, or `library`).
 
-
-### 3. Filtrer et Trouver la Requête
-- Dans la barre de recherche "Filter" de l'onglet Network, tapez `/api`.
-- Si la liste est vide, rafraîchissez la page (`F5`) ou changez de salon (cliquez sur un autre serveur ou un ami).
-- Sélectionnez l'une des requêtes qui apparaît dans la liste (par exemple `science`, `messages` ou `library`).
-
-### 4. Extraire le Token
-- Une fois la requête sélectionnée, allez dans la section **Headers** (En-têtes) à droite.
-- Cherchez la ligne nommée **`authorization`** dans la catégorie "Request Headers".
-- La valeur à côté de `authorization` est votre **Token Discord**. Copiez-la soigneusement.
+### 4. Extract Your Token
+- Once a request is selected, look at the **Headers** section on the right.
+- Scroll down to the **Request Headers** category.
+- Find the line named **`authorization`**.
+- The value next to `authorization` is your **Discord Token**. Copy it carefully.
 
 ---
 
 > [!CAUTION]
-> - **NE PARTAGEZ JAMAIS** votre token. Quiconque possède ce jeton a un accès total à votre compte (messages, serveurs, paramètres) sans avoir besoin de votre mot de passe ou de l'A2F.
-> - Si vous pensez que votre token a été compromis, **changez immédiatement votre mot de passe Discord**. Cela réinitialisera automatiquement votre jeton.
+> - **NEVER SHARE** your token with anyone. Anyone with this token has full access to your account (messages, servers, settings) without needing your password or 2FA.
+> - If you suspect your token has been compromised, **change your Discord password immediately**. This will automatically reset your token and invalidate the old one.
 
 **This guide is intended for learning and understanding how Discord works. Any malicious use is strictly prohibited.**
